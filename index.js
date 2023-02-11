@@ -53,12 +53,21 @@ const storage = multer.diskStorage({
   app.use("/posts", postRoutes);
   
  /* MONGOOSE SETUP */
-const PORT = process.env.PORT || 6001;
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+//const PORT = process.env.PORT || 6001;
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://zbradshaw:Ahn4b112@cluster0.mlpck8w.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+ // perform actions on the collection object
+  client.close();
+});
+
+//mongoose
+  //.connect(process.env.MONGO_URL, {
+   // useNewUrlParser: true,
+   // useUnifiedTopology: true,
+//  })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 

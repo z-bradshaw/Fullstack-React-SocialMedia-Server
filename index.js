@@ -68,8 +68,8 @@ client.connect(err => {
    // useNewUrlParser: true,
    // useUnifiedTopology: true,
 //  })
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+ // .then(() => {
+  //  app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME */
     // User.insertMany(users);
